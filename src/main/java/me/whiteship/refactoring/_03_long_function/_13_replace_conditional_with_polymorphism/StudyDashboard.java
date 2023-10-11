@@ -29,7 +29,8 @@ public class StudyDashboard {
 
     private void print() throws IOException, InterruptedException {
         checkGithubIssues(getGhRepository());
-        new StudyPrinter(this.totalNumberOfEvents, this.participants, PrinterMode.MARKDOWN).execute();
+        // 다형성을 적용했던 예시
+        new ConsolePrinter(this.totalNumberOfEvents, this.participants).execute();
     }
 
     private GHRepository getGhRepository() throws IOException {
@@ -41,7 +42,7 @@ public class StudyDashboard {
         ExecutorService service = Executors.newFixedThreadPool(8);
         CountDownLatch latch = new CountDownLatch(totalNumberOfEvents);
 
-        for (int index = 1 ; index <= totalNumberOfEvents ; index++) {
+        for (int index = 1; index <= totalNumberOfEvents; index++) {
             int eventId = index;
             service.execute(() -> {
                 try {
