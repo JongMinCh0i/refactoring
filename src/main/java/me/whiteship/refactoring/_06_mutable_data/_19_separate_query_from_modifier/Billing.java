@@ -11,15 +11,15 @@ public class Billing {
         this.emailGateway = emailGateway;
     }
 
-    public double getTotalOutstandingAndSendBill() {
-        double result = customer.getInvoices().stream()
+    // 조회
+    public double totalOutstanding() {
+        return customer.getInvoices().stream()
                 .map(Invoice::getAmount)
                 .reduce((double) 0, Double::sum);
-        sendBill();
-        return result;
     }
 
-    private void sendBill() {
+    // 수정
+    public void sendBill() {
         emailGateway.send(formatBill(customer));
     }
 
