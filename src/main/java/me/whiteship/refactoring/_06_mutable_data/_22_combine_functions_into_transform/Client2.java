@@ -10,6 +10,8 @@ public class Client2 {
 
     public Client2(Reading reading) {
         this.base = baseRate(reading.month(), reading.year()) * reading.quantity();
+
+        // 공제 금액
         this.taxableCharge = Math.max(0, this.base - taxThreshold(reading.year()));
     }
 
