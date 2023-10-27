@@ -18,4 +18,8 @@ public class ElectricityUsage {
     public double getPricePerUnit() {
         return pricePerUnit;
     }
+
+    public double getBill() {
+        return this.getAmount() * this.getPricePerUnit();
+    }
 }

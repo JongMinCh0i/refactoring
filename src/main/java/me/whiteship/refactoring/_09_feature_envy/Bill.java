@@ -1,5 +1,6 @@
 package me.whiteship.refactoring._09_feature_envy;
 
+// 기능 편애 클래스
 public class Bill {
 
     private ElectricityUsage electricityUsage;
@@ -7,9 +8,12 @@ public class Bill {
     private GasUsage gasUsage;
 
     public double calculateBill() {
-        var electicityBill = electricityUsage.getAmount() * electricityUsage.getPricePerUnit();
-        var gasBill = gasUsage.getAmount() * gasUsage.getPricePerUnit();
-        return electicityBill + gasBill;
+        return electricityUsage.getBill() + gasUsage.getGasBill();
     }
+
+    private double getBill() {
+        return gasUsage.getAmount() * gasUsage.getPricePerUnit();
+    }
+
 
 }
